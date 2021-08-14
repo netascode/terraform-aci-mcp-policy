@@ -1,9 +1,9 @@
 output "dn" {
-  value       = aci_rest.fvTenant.id
-  description = "Distinguished name of `fvTenant` object."
+  value       = aci_rest.mcpIfPol.id
+  description = "Distinguished name of `mcpIfPol` object."
 }
 
 output "name" {
-  value       = aci_rest.fvTenant.content.name
-  description = "Tenant name."
+  value       = aci_rest.mcpIfPol.content.name
+  description = "MCP policy name."
 }

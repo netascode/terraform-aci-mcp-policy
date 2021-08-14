@@ -1,7 +1,6 @@
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_mcp_policy" {
+  source = "netascode/mcp-policy/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  name        = "MCP-OFF"
+  admin_state = false
 }

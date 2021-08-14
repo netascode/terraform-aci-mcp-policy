@@ -1,9 +1,8 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "mcpIfPol" {
+  dn         = "uni/infra/mcpIfP-${var.name}"
+  class_name = "mcpIfPol"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    name    = var.name
+    adminSt = var.admin_state == true ? "enabled" : "disabled"
   }
 }
