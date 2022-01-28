@@ -5,8 +5,8 @@ terraform {
     }
 
     aci = {
-      source  = "netascode/aci"
-      version = ">=0.2.0"
+      source  = "CiscoDevNet/aci"
+      version = ">=2.0.0"
     }
   }
 }
@@ -17,7 +17,7 @@ module "main" {
   name = "MCP-ON"
 }
 
-data "aci_rest" "mcpIfPol" {
+data "aci_rest_managed" "mcpIfPol" {
   dn = "uni/infra/mcpIfP-${module.main.name}"
 
   depends_on = [module.main]
@@ -28,13 +28,13 @@ resource "test_assertions" "mcpIfPol" {
 
   equal "name" {
     description = "name"
-    got         = data.aci_rest.mcpIfPol.content.name
+    got         = data.aci_rest_managed.mcpIfPol.content.name
     want        = module.main.name
   }
 
   equal "adminSt" {
     description = "adminSt"
-    got         = data.aci_rest.mcpIfPol.content.adminSt
+    got         = data.aci_rest_managed.mcpIfPol.content.adminSt
     want        = "enabled"
   }
 }
